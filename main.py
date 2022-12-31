@@ -2,7 +2,6 @@ import asyncio
 import discord
 import logging
 from discord.ext import commands
-from discord.ext.commands import ColourConverter
 from dotenv import load_dotenv
 from os import getenv
 from datetime import datetime
@@ -148,11 +147,11 @@ class MainServer(commands.Cog):
 
     @commands.Cog.listener()
     async def on_connect(self):
-        print("I DRINK A LOT OF WATER")
+        print("Connecting...")
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print("I PISS A LOT OF PEE")
+        print("Ready.")
 
 
 class MailServer(commands.Cog):
