@@ -64,6 +64,7 @@ class MainServer(commands.Cog):
         if ctx.channel.id == staffNoticeID:
             confirmReaction = '✅'
             rejectReaction = '❌'
+            relevantReactions = [confirmReaction, rejectReaction]
             notMentioned = True
             expiryTime = datetime.utcnow() - relativedelta(months=3)
             cmdChannel = ctx.guild.get_channel(commandChanID)
@@ -84,7 +85,7 @@ class MainServer(commands.Cog):
                                                description="This only shows a list of active verbals.",
                                                colour=mention.color)
                     verbalList.set_author(name=mention.display_name, url="https://crouton.net",
-                                          icon_url=mention.avatar_url)
+                                          icon_url=mention.display_avatar.url)
                     verbalList.set_footer(text=mention.status)
 
                     for verbal in verbals:
@@ -166,7 +167,7 @@ class MailServer(commands.Cog):
         await ctx.send("Hello, {0.name} member!".format(guild))
 
 
-bot.add_cog(MainServer(bot))
-bot.add_cog(MailServer(bot))
+asyncio.run(bot.add_cog(MainServer(bot)))
+asyncio.run(bot.add_cog(MailServer(bot)))
 bot.run(token)
 print("ready")
