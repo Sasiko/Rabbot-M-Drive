@@ -65,8 +65,8 @@ class MainServer(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, ctx):
         if ctx.channel.id == staffNoticeID:
-            confirmReaction = '?'
-            rejectReaction = '?'
+            confirmReaction = '✅'
+            rejectReaction = '❌'
             relevantReactions = [confirmReaction, rejectReaction]
             notMentioned = True
             expiryTime = datetime.utcnow() - relativedelta(months=3)
@@ -84,7 +84,7 @@ class MainServer(commands.Cog):
                     if notMentioned:
                         await cmdChannel.send(content=ctx.author.mention)
                         notMentioned = False
-                    verbalList = discord.Embed(title="?? Verbal History ??", type="rich",
+                    verbalList = discord.Embed(title="🔎 Verbal History 🔎", type="rich",
                                                description="This only shows a list of active verbals.",
                                                colour=mention.color)
                     verbalList.set_author(name=mention.display_name, url="https://crouton.net",
@@ -98,7 +98,7 @@ class MainServer(commands.Cog):
                                                    verbal.jump_url + ")", inline=False)
                     await cmdChannel.send(embed=verbalList)
 
-                    warnPrompt = discord.Embed(title="? User has accumulated three verbals ?", type="rich",
+                    warnPrompt = discord.Embed(title="⚠ User has accumulated three verbals ⚠", type="rich",
                                                description="Issue a warning to " + mention.display_name + "?",
                                                colour=0xdddd20)
                     warnPrompt.add_field(name=confirmReaction, value="Warn the user", inline=True)
@@ -116,24 +116,24 @@ class MainServer(commands.Cog):
                         reaction, user = await bot.wait_for('reaction_add', timeout=300.0, check=check)
                     except asyncio.TimeoutError:
                         await sent.clear_reactions()
-                        timeoutEmbed = discord.Embed(title="? User has accumulated three verbals ?", type="rich",
+                        timeoutEmbed = discord.Embed(title="⚠ User has accumulated three verbals ⚠", type="rich",
                                                      description="The command has timed out.",
                                                      colour=0x000000)
                         await sent.edit(embed=timeoutEmbed)
                     else:
                         await sent.clear_reactions()
                         if reaction.emoji == confirmReaction:
-                            actionEmbed = discord.Embed(title="? User has accumulated three verbals ?", type="rich",
+                            actionEmbed = discord.Embed(title="⚠ User has accumulated three verbals ⚠", type="rich",
                                                         description="Proceeded with issuing the warning.",
                                                         colour=0x20DD20)
                             await sent.edit(embed=actionEmbed)
                             await cmdChannel.send("-warn " + str(mention.id) + " Accumulated three verbal warnings.")
                         elif reaction.emoji == rejectReaction:
-                            actionEmbed = discord.Embed(title="? User has accumulated three verbals ?", type="rich",
+                            actionEmbed = discord.Embed(title="⚠ User has accumulated three verbals ⚠", type="rich",
                                                         description="Cancelled the warning.", colour=0x400505)
                             await sent.edit(embed=actionEmbed)
                         else:
-                            actionEmbed = discord.Embed(title="? User has accumulated three verbals ?", type="rich",
+                            actionEmbed = discord.Embed(title="⚠ User has accumulated three verbals ⚠", type="rich",
                                                         description="Invalid selection made.", colour=0xDD2020)
                             await sent.edit(embed=actionEmbed)
 
