@@ -9,8 +9,10 @@ from dateutil.relativedelta import relativedelta
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
-handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
-handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+log_file = 'discord.log'
+handler = logging.FileHandler(filename=log_file, encoding='utf-8', mode='w')
+log_format = f'{asctime}:{levelname}:{name}: {message}'
+handler.setFormatter(logging.Formatter(log_format))
 logger.addHandler(handler)
 
 intents = discord.Intents.default()
