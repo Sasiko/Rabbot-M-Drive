@@ -31,7 +31,6 @@ serverMMID = int(os.environ.get("MM_SERVER"))
 boosterID = int(os.environ.get("BOOSTER_ROLE_ID"))
 ticksID = int(os.environ.get("TICKS_ROLE_ID"))
 autoModID = int(os.environ.get("AUTOMOD_ID"))
-staffChanID = int(os.environ.get("STAFF_CHANNEL"))
 commandChanID = int(os.environ.get("CMD_CHANNEL"))
 staffNoticeID = int(os.environ.get("NOTICE_CHANNEL"))
 reportHereID = int(os.environ.get("REPORT_CHANNEL"))
@@ -137,7 +136,7 @@ class MainServer(commands.Cog):
                                                         description="Invalid selection made.", colour=0xDD2020)
                             await sent.edit(embed=actionEmbed)
 
-        if ctx.channel.id == commandChanID or ctx.channel.id == staffChanID:
+        if ctx.channel.id == commandChanID:
             def isAutoModWarnings(ctx):
                 return ctx.author == autoModID and ctx.content.contains("Warnings - User")
 
