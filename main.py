@@ -21,6 +21,7 @@ intents = discord.Intents.default()
 intents.members = True
 intents.guilds = True
 intents.reactions = True
+intents.messages = True
 
 token = os.environ.get("TOKEN")
 cmdPrefix = os.environ.get("CTX")
