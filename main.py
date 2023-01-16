@@ -25,7 +25,7 @@ intents.messages = True
 
 token = os.environ.get("TOKEN")
 cmdPrefix = os.environ.get("CTX")
-authorizedACRoles = [int(i) for i in os.environ.get("AUTHORIZED_AC_ROLES").split()]
+authorizedACRoles = list(map(int, os.getenv("AUTHORIZED_AC_ROLES").split()))
 serverACID = int(os.environ.get("AC_SERVER"))
 serverMMID = int(os.environ.get("MM_SERVER"))
 boosterID = int(os.environ.get("BOOSTER_ROLE_ID"))
