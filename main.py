@@ -28,7 +28,6 @@ authorizedACRoles = [int(i) for i in os.environ.get("AUTHORIZED_AC_ROLES").split
 serverACID = int(os.environ.get("AC_SERVER"))
 serverMMID = int(os.environ.get("MM_SERVER"))
 boosterID = int(os.environ.get("BOOSTER_ROLE_ID"))
-SasikoID = int(os.environ.get("OWNER_ID"))
 ticksID = int(os.environ.get("TICKS_ROLE_ID"))
 autoModID = int(os.environ.get("AUTOMOD_ID"))
 staffChanID = int(os.environ.get("STAFF_CHANNEL"))
