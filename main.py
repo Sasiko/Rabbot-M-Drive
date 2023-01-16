@@ -35,7 +35,7 @@ commandChanID = int(os.environ.get("CMD_CHANNEL"))
 staffNoticeID = int(os.environ.get("NOTICE_CHANNEL"))
 reportHereID = int(os.environ.get("REPORT_CHANNEL"))
 
-bot = commands.Bot(command_prefix=cmdPrefix, intents=intents)
+bot = commands.Bot(command_prefix=cmdPrefix, intents=intents, cache_auth=True, cache_guilds=True)
 
 
 # @tasks.loop(seconds=60) task runs every 60s
